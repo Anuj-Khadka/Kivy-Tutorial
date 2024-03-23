@@ -1,0 +1,42 @@
+WindowManager:
+    LoginWindow:
+    HomeWindow:
+
+<LoginWindow>:
+    name: "login"
+
+    GridLayout:
+        cols: 1
+
+        GridLayout:
+            cols: 2
+            Label:
+                id: email
+                text: "Email"
+            TextInput:
+                id: emailfield
+                multiline: False
+
+            Label:
+                id: password
+                text: "Password"
+            TextInput:
+                id: passwordfield
+                multiline: False
+        
+        Button:
+            text: "Submit"
+            background_color: 0.2, 0.4, 0.8, 0.8
+            size_hint: 0.3, 0.6
+            on_release: 
+                app.root.current = "home" if passwordfield.text == "anuj" else "login"
+                root.manager.transition.direction = "up"
+
+<HomeWindow>:
+    name: "home"
+
+    Button:
+        text: "Get Back"
+        on_release: 
+            app.root.current = "login"
+            root.manager.transition.direction = "right"
